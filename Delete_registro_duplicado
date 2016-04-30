@@ -1,0 +1,35 @@
+http://ruminiki.blogspot.com.br/2008/12/apagando-registros-duplicados-no.html
+
+http://paposql.blogspot.com.br/2014/01/localizando-e-excluindo-registros.html
+
+drop table registro_duplicado
+
+SELECT count(*)as qtde,
+max(q71_sequencial) as q71_sequencial,q71_estrutural --into registro_duplicado
+FROM cnae
+group by q71_estrutural
+having count(*)>1
+
+
+
+
+select *
+from registro_duplicado
+
+delete
+from issqn.cnaeanalitica x
+WHERE q72_cnae IN (select q71_sequencial
+                       from issqn.cnae
+                       WHERE x.q72_cnae=q71_sequencial and q71_sequencial IN (SELECT max(q71_sequencial) FROM registro_duplicado GROUP BY q71_sequencial)
+
+                       );
+
+
+delete from  issqn.cnae WHERE q71_sequencial  IN (SELECT max(q71_sequencial) FROM registro_duplicado GROUP BY q71_sequencial);
+
+ select count(*)as qtde,q71_estrutural
+ from
+  cnae
+  where q71_sequencial>2366
+  group by q71_estrutural
+  having count(*)>1

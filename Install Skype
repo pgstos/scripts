@@ -1,0 +1,49 @@
+Como testar sua Webcam no Linux.
+
+Muitos novatos queixam-se com razão de que no Linux não um painel de controle onde se possa testar um dispositivo tão comum nos dias de hoje, a webcam.
+
+Na realidade, o programa para testar existe, porém não há atalho no sistema para ele.
+Neste artigo vamos sanar este problema.
+Primeiramente dê um ALT+F2 e execute :
+
+    gksudo gedit /usr/share/applications/gstreamer-properties.desktop
+
+Você verá as seguintes linhas :
+
+    [Desktop Entry]
+    Name=Multimedia Systems Selector
+    Comment=Configure defaults for GStreamer applications
+    Exec=gstreamer-properties
+    Icon=gstreamer-properties
+    StartupNotify=true
+    Terminal=false
+    NoDisplay=true
+    Type=Application
+    Categories=GNOME;GTK;Settings;HardwareSettings;
+    X-GNOME-Bugzilla-Bugzilla=GNOME
+    X-GNOME-Bugzilla-Product=gnome-media
+    X-GNOME-Bugzilla-Component=gstreamer-properties
+    X-GNOME-Bugzilla-Version=2.28.1d
+    X-Ubuntu-Gettext-Domain=gnome-media-2.0
+
+Vê a parte em negrito ? Pois então substitua-a por :
+
+    NoDisplay=false
+
+Eu também aproveitaria para traduzir os comentários no Atalho, substituindo essas linhas :
+
+    Name=Multimedia Systems Selector
+    Comment=Configure defaults for GStreamer applications
+
+por :
+
+    Name=Seletor multimedia do sistema
+    Comment=Configure o padrão para as aplicações que usam o gstreamer
+
+Salve e feche o editor de textos.
+Pronto ! Agorá vá no menu do GNOME->Sistema->Preferencias e você verá um novo elemento “Seletor multimedia do sistema”, execute-o.
+
+
+
+sudo apt-add-repository "deb http://archive.canonical.com/ $(lsb_release -sc) partner"
+sudo apt-get update && sudo apt-get install skype

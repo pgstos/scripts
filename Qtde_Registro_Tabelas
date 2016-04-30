@@ -1,0 +1,70 @@
+--Qtde de registros por schema e tabela
+SELECT
+    n.nspname AS schema_name,
+    c.relname AS table_name,
+    c.reltuples::int AS num_reg
+FROM pg_class c
+    LEFT JOIN pg_namespace n ON n.oid = c.relnamespace
+    LEFT JOIN pg_tablespace t ON t.oid = c.reltablespace
+WHERE n.nspname='mig_public'--c.relkind = 'r'::char
+AND nspname NOT IN('information_schema','pg_catalog','pg_toast')
+ORDER BY n.nspname; 
+
+----Qtde de registros por schema e tabela
+select pg_namespace.nspname as schema,relname as tabelas,reltuples as qtde_registros
+from pg_class 
+inner join pg_namespace on pg_class.relnamespace=pg_namespace.oid 
+and  pg_class.relkind='r' and pg_namespace.nspname ='mig_siap' and
+nspname NOT IN('information_schema','pg_catalog','pg_toast') and reltuples > 1
+order by 3 asc
+
+
+
+select relname,reltuples 
+from pg_class 
+inner join pg_namespace on pg_class.relnamespace=pg_namespace.oid 
+and  pg_class.relkind='r' and pg_namespace.nspname='mig_erpsim_tributo' and reltuples>0
+order by 2 desc;
+
+
+SELECT specific_schema as "Schema", count(data_type) AS "Funções"
+    FROM information_schema.routines
+    WHERE specific_schema NOT IN ('dbateste','information_schema','pg_catalog','pg_temp_1', 
+          'pg_toast','xmg','postgres','publico','public')
+    AND data_type <> '"trigger"'
+GROUP BY specific_schema;
+
+
+SELECT sequence_schema as "Schema", count(data_type) as "Sequence" 
+    FROM information_schema.sequences
+    WHERE sequence_schema NOT IN ('dbateste','information_schema','pg_catalog','pg_temp_1',
+          'pg_toast','xmg','postgres','publico','public') 
+GROUP BY sequence_schema;
+
+
+--Qtde de tabelas por schema
+s
+
+
+SELECT specific_schema as "Schema", count(data_type) AS "Funções de Triggers" 
+    FROM information_schema.routines
+    WHERE specific_schema NOT IN ('dbateste','information_schema','pg_catalog','pg_temp_1',
+          'pg_toast','xmg','postgres','publico','public') 
+    AND data_type = '"trigger"'
+GROUP BY specific_schema;
+
+
+
+SELECT table_schema as "Schema", count(table_type) as "Views"
+    FROM information_schema.tables
+    WHERE table_schema NOT IN ('dbateste','information_schema','pg_catalog','pg_temp_1',
+          'pg_toast','xmg','postgres','publico','public') 
+    AND table_type = 'VIEW'
+GROUP BY table_schema;
+
+
+SELECT trigger_schema as "Schema", count(trigger_catalog) AS "Triggers"
+    FROM information_schema.triggers
+    WHERE trigger_schema NOT IN ('dbateste','information_schema','pg_catalog','pg_temp_1', 
+          'pg_toast','xmg','postgres','publico','public')
+GROUP BY trigger_schema;

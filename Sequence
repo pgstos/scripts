@@ -1,0 +1,52 @@
+SELECT setval('solicita_pc10_numero_seq', max(pc10_numero)) FROM compras.solicita
+
+SELECT setval('db_estruturavalor_db121_sequencial_seq', max(db121_sequencial)) FROM configuracoes.db_estruturavalor
+
+
+SELECT setval('solicita_pc10_numero_seq', max(pc10_numero)) FROM compras.solicita
+
+--Descobre o nome da sequence
+SELECT *
+    FROM information_schema.sequences
+    WHERE sequence_schema in('issqn') and sequence_name like '%ativid%'
+
+--descobre o próximo valor da sequence
+SELECT * FROM issatividconfdocumento_q119_sequencial_seq;
+
+ --reinicia a contagem da sequence. Deve somar mais 1 no último valor
+ ALTER SEQUENCE cnaeanalitica_q72_sequencial_seq RESTART WITH 1331;
+
+--Retorna o último gravado na sequencia e não na tabela
+select last_value from conplano_c60_codcon_seq
+
+
+SELECT setval('cnaeanalitica_q72_sequencial_seq',1307);           o próximo nextval() retornará 43
+SELECT setval('foo', 42, true);     o mesmo acima
+SELECT setval('foo', 42, false);    o próximo nextval() retornará 42
+select nextval('cnaeanalitica_q72_sequencial_seq')
+
+
+
+ --Mostrar Sequences de um Esquema
+SELECT c.relname AS seqname, u.usename AS seqowner, pg_catalog.obj_description(c.oid, 'pg_class') AS seqcomment,
+    (SELECT spcname FROM pg_catalog.pg_tablespace pt WHERE pt.oid=c.reltablespace) AS tablespace
+     FROM pg_catalog.pg_class c, pg_catalog.pg_user u, pg_catalog.pg_namespace n
+     WHERE c.relowner=u.usesysid AND c.relnamespace=n.oid
+     AND c.relkind = 'S' AND n.nspname='contabilidade' ORDER BY seqname
+
+http://pgdocptbr.sourceforge.net/pg80/functions-sequence.html
+
+
+begin;
+--SELECT setval('cgm_z01_numcgm_seq', (select max(z01_numcgm)+1 from protocolo.cgm));
+SELECT setval('cgm_z01_numcgm_seq', max(z01_numcgm)) FROM protocolo.cgm;
+commit;
+select nextval('cgm_z01_numcgm_seq')
+from protocolo.cgm limit 100;
+
+
+--Realiza a contagem do serviço
+select distinct t2.descricao as servico, count(*) over (partition by t1.servico_publico) as qtde
+from mig_erpsim_public.imobiliario_servico_publico t1
+inner join mig_erpsim_public.servico_publico t2 on t2.id=t1.servico_publico
+order by 2,1 asc

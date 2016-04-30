@@ -1,0 +1,39 @@
+
+select pg_namespace.nspname as schema,relname as tabelas,reltuples as qtde_registros
+from pg_class 
+inner join pg_namespace on pg_class.relnamespace=pg_namespace.oid 
+and  pg_class.relkind='r' and pg_namespace.nspname not like 'mig%' and
+nspname NOT IN('information_schema','pg_catalog','pg_toast') and reltuples > 1
+
+
+
+SELECT
+    n.nspname AS schema_name,
+    c.relname AS table_name,
+    c.reltuples::int AS num_reg
+FROM pg_class c
+    LEFT JOIN pg_namespace n ON n.oid = c.relnamespace
+    LEFT JOIN pg_tablespace t ON t.oid = c.reltablespace
+WHERE c.relkind = 'r'::char
+AND nspname NOT IN('information_schema','pg_catalog','pg_toast')
+ORDER BY 3 desc;
+
+
+--Lista a qtde de registros por tabela e schema
+select relname,reltuples 
+from pg_class 
+inner join pg_namespace on pg_class.relnamespace=pg_namespace.oid 
+and  pg_class.relkind='r' and pg_namespace.nspname='protocolo';
+
+
+-- Usa as estatísticas do PostgreSQL para a contagem.
+-- Para números mais precisos, execute 
+--    VACUUM ANALYZE
+-- antes de iniciar.
+SELECT  
+   relname,
+   n_live_tup     
+FROM  
+   pg_stat_user_tables     
+ORDER BY  
+   n_live_tup DESC;

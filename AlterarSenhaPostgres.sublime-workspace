@@ -1,0 +1,571 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"e-",
+				"e-cidade"
+			],
+			[
+				"e",
+				"ecidade"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 75.0,
+		"selected_items":
+		[
+			[
+				"set sql",
+				"Set Syntax: SQL"
+			],
+			[
+				"space",
+				"Trailing Spaces: Delete Trailing Spaces"
+			],
+			[
+				"remo",
+				"Emmet: Remove Tag"
+			],
+			[
+				"spa",
+				"Trailing Spaces: Delete Trailing Spaces"
+			],
+			[
+				"alin",
+				"Trailing Spaces: Toggle Trailing Spaces Highlighting"
+			],
+			[
+				"align",
+				"AlignTab: Table Mode"
+			],
+			[
+				"package i",
+				"Package Control: Install Package"
+			],
+			[
+				"set sq",
+				"Set Syntax: SQL"
+			],
+			[
+				"set  sql",
+				"Set Syntax: SQL"
+			],
+			[
+				"train",
+				"Trailing Spaces: Delete Trailing Spaces"
+			],
+			[
+				"",
+				"Bookmarks: Clear All"
+			],
+			[
+				"remov",
+				"Emmet: Remove Tag"
+			],
+			[
+				"emme",
+				"Emmet: Rename Tag"
+			],
+			[
+				"set em",
+				"Set Syntax: Emmet"
+			],
+			[
+				"emmen",
+				"Emmet: Rename Tag"
+			],
+			[
+				"install ",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"pac",
+				"Preferences: Browse Packages"
+			],
+			[
+				"espa",
+				"Indentation: Convert to Spaces"
+			],
+			[
+				"SET SQL",
+				"Set Syntax: SQL"
+			],
+			[
+				"s",
+				"Set Syntax: Ruby"
+			],
+			[
+				"SET SQ",
+				"Set Syntax: SQL"
+			],
+			[
+				"set",
+				"Set Syntax: SQL"
+			],
+			[
+				"set ",
+				"Set Syntax: SQL"
+			],
+			[
+				"se",
+				"Set Syntax: SQL"
+			],
+			[
+				"p",
+				"Set Syntax: PHP"
+			],
+			[
+				"side",
+				"Preferences: Key Bindings - User"
+			],
+			[
+				"fil",
+				"Code Folding: Unfold All"
+			],
+			[
+				"convr",
+				"Indentation: Convert to Spaces"
+			],
+			[
+				"car",
+				"Indentation: Convert to Tabs"
+			],
+			[
+				"pre",
+				"Preferences: Settings - Default"
+			]
+		],
+		"width": 521.0
+	},
+	"console":
+	{
+		"height": 139.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/paulo/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
+		"/media/Dados/Dicas/Notepadd ++/Atalhos.txt",
+		"/home/paulo/.config/sublime-text-3/Packages/Default/Preferences.sublime-settings",
+		"/home/paulo/Documentos/testeteste",
+		"/home/paulo/.config/sublime-text-3/Packages/User/Default (Linux).sublime-keymap",
+		"/home/paulo/.config/sublime-text-3/Packages/TrailingSpaces/trailing_spaces.sublime-settings",
+		"/home/paulo/.config/sublime-text-3/Packages/User/trailing_spaces.sublime-settings",
+		"/home/paulo/.config/sublime-text-3/Packages/User/Emmet.sublime-settings",
+		"/media/Dados/Dicas/PostgreSql/Sequence",
+		"/media/Dados/Arenda/MateusLeme/Patrimonial/03_InsertEstoque",
+		"/media/Dados/Arenda/MateusLeme/Patrimonial/DeleteEstoque",
+		"/media/Dados/Arenda/Acessos/Dados_Acesso",
+		"/media/Dados/Arenda/Acessos/Cadastros",
+		"/media/Dados/Arenda/MateusLeme/CorrecaoAlvaraMateusLeme11022015",
+		"/media/Dados/Arenda/MateusLeme/Patrimonial/02_InseriDiferenca_Material_OK_Ja_Rodei",
+		"/media/Dados/Dicas/PostgreSql/DicasPgsqlTerminal",
+		"/media/Dados/Arenda/MateusLeme/Patrimonial/04_Grupo_material",
+		"/home/paulo/Downloads/Classe grupos ajustados.csv",
+		"/home/paulo/.config/sublime-text-3/Packages/Emmet/Default (Linux).sublime-keymap",
+		"/home/paulo/.config/sublime-text-3/Packages/TrailingSpaces/README.md",
+		"/home/paulo/Downloads/Classe grupos ajustados.ods",
+		"/media/Dados/Dicas/E-cidade/Dicas E-cidade.txt",
+		"/media/Dados/Arenda/MateusLeme/BaixaMatricula",
+		"/media/Dados/Dicas/PostgreSql/GeraSequencial",
+		"/media/Dados/Arenda/MateusLeme/Patrimonial/02_InseriDiferenca_Material",
+		"/media/Dados/Arenda/MateusLeme/Patrimonial/01_CorrecaoUnidade",
+		"/media/Dados/Dicas/PostgreSql/HabilitarTrigger",
+		"/media/Dados/Arenda/MateusLeme/Patrimonial/CorrecaoUnidade",
+		"/media/Dados/Dicas/E-cidade/Unidade_Saida",
+		"/media/Dados/Arenda/MateusLeme/Patrimonial/InsertEstoque",
+		"/media/Dados/Arenda/MateusLeme/Patrimonial/Unidade_Leia-me",
+		"/media/Dados/Arenda/MateusLeme/CorrecaoUnidade",
+		"/media/Dados/Dicas/Sublime/Dicas1",
+		"/media/Dados/Dicas/Sublime/Dicas",
+		"/media/Dados/Dicas/PostgreSql/StartarPostgreSql.txt",
+		"/media/Dados/Dicas/E-cidade/ErroSequenceTransacao",
+		"/media/Dados/Dicas/E-cidade/RotinaBackup/script-backup-ecidade.tar.gz",
+		"/media/Dados/Arenda/MateusLeme/teste.txt",
+		"/media/Dados/Arenda/MateusLeme/Unidade_Leia-me",
+		"/media/Dados/Arenda/MateusLeme/DeleteEstoque",
+		"/media/Dados/Compartilhamento/Unidade",
+		"/media/Dados/Dicas/Linux/DicasVim",
+		"/media/Dados/Alfa/Pendencia_Melhorias.txt",
+		"/media/Dados/Dicas/Linux/Dicas_Vim",
+		"/media/Dados/Dicas/Linux/Dicas_Vim2",
+		"/media/Dados/Alfa/text.txt solto",
+		"/media/Dados/Dicas/E-cidade/ErroNaoGravaContratado",
+		"/media/Dados/Arenda/MateusLeme/CorrecaoAlvarMateusLeme2",
+		"/media/Dados/Dicas/PostgreSql/TamanhoBanco",
+		"/media/Dados/Arenda/MateusLeme/CorrecaoAlvaraMateusLeme",
+		"/home/paulo/Downloads/calculo tlf/fc_issqn.sql",
+		"/media/Dados/Arenda/Claudio/Script/CGM",
+		"/media/Dados/Dicas/Linux/Vim",
+		"/media/Dados/Alfa/dados rede Alfa.txt",
+		"/media/Dados/Alfa/Erros_Melhorias.txt",
+		"/home/paulo/Downloads/Pendencia_Melhorias.txt",
+		"/media/Dados/Arenda/Claudio/Script/ScriptOficialEducacao",
+		"/media/Dados/Arenda/Claudio/Script/Script",
+		"/media/Dados/Arenda/Claudio/Script/ScriptClaudio/01_CadastroBasico",
+		"/media/Dados/Arenda/Claudio/Script/ScriptClaudio/Correcao/01_Correcao_Lote",
+		"/media/Dados/Dicas/Linux/Grep_Procurar_dentro_de_arquivos",
+		"/media/Dados/Arenda/Claudio/MigraEsquema",
+		"/media/Dados/Arenda/Acessos/Contato",
+		"/home/paulo/Downloads/Insertt3ativi.sql",
+		"/home/paulo/Downloads/Insertcadecono.sql",
+		"/media/Dados/Arenda/E-cidadeArenda/run.psql",
+		"/media/Dados/Dicas/PostgreSql/FazerBackup",
+		"/home/paulo/Documentos/link",
+		"/home/paulo/Downloads/Lúcio (Cotação de Preços)/Help",
+		"/media/Dados/Dicas/E-cidade/Permissao_em_novos_ambientes",
+		"/media/Dados/Dicas/Linux/DescompactarArquivos",
+		"/media/Dados/Dicas/Linux/CopiarArquivosDiretorios",
+		"/media/Dados/Arenda/E-cidadeArenda/Lucio/Leia-me",
+		"/home/paulo/.cache/.fr-FFj814/Lúcio (Cotação de Preços)/Help",
+		"/media/Dados/Dicas/PostgreSql/RetornaSchemaTabela",
+		"/media/Dados/Dicas/E-cidade/ErroSequenceCgm",
+		"/media/Dados/Programas/Senha",
+		"/media/Dados/Dicas/E-cidade/Insert_transacao",
+		"/media/Dados/Dicas/E-cidade/ErroRelatorioContas",
+		"/media/Dados/Dicas/E-cidade/ErroContaPagadora",
+		"/media/Dados/Dicas/E-cidade/ErroConsultaGeralFinanceira",
+		"/media/Dados/Dicas/E-cidade/ErroAoInserirLançamento",
+		"/home/paulo/Downloads/calculo tlf/anotacoes.txt",
+		"/media/Dados/Arenda/Claudio/Script/05_DividaIptu",
+		"/media/Dados/Dicas/E-cidade/ErroCnae",
+		"/media/Dados/Arenda/Claudio/Script/Cnae",
+		"/media/Dados/Arenda/Claudio/Script/ScriptClaudio/04_Cadastro_IssBase",
+		"/media/Dados/Dicas/PostgreSql/Backup_Schema",
+		"/home/paulo/.config/sublime-text-3/Packages/User/SQL.sublime-settings",
+		"/media/Dados/Arenda/Claudio/Script/ScriptClaudio/Correcao271114/03_InseriBaixaMatricula",
+		"/media/Dados/Arenda/Claudio/Script/ScriptClaudio/Correcao271114/02_Caracteristica",
+		"/media/Dados/Arenda/Claudio/Script/ScriptClaudio/Correcao271114/01_CadastroLote",
+		"/media/Dados/Dicas/Oracle/SIGN_FUNÇÃO.txt",
+		"/media/Dados/Dicas/Oracle/FUNÇÕES BASICAS.txt",
+		"/media/Dados/Dicas/Oracle/Função Colocar a primeira em maiuscula.txt",
+		"/media/Dados/Dicas/PostgreSql/AspasSimplesDuplaEnter",
+		"/media/Dados/Dicas/PostgreSql/Trim",
+		"/media/Dados/Dicas/PostgreSql/VerificaStringPossuiNumero",
+		"/media/Dados/Dicas/PostgreSql/Formatar_CPF_CNPJ",
+		"/media/Dados/Dicas/PostgreSql/FormatarMoeda",
+		"/media/Dados/Dicas/PostgreSql/FunçãoSemAcento",
+		"/media/Dados/Dicas/PostgreSql/Function",
+		"/media/Dados/Dicas/PostgreSql/RetiraAcentos",
+		"/media/Dados/Dicas/PostgreSql/Like",
+		"/media/Dados/Dicas/PostgreSql/VerificaEmail",
+		"/media/Dados/Dicas/PostgreSql/EspaçoTabela",
+		"/media/Dados/Dicas/PostgreSql/CriarCopiaBanco",
+		"/media/Dados/Dicas/Linux/DicasLinux",
+		"/media/Dados/Dicas/PostgreSql/Copy",
+		"/media/Dados/HDDell/Ativadores/Ativadores/Office 2010/serial.txt",
+		"/home/paulo/.config/sublime-text-3/Packages/Default/Default (Linux).sublime-keymap",
+		"/media/Dados/Dicas/E-cidade/CursoIPTU/dados_iptu_normal_2015_2014-09-17_120000.txt",
+		"/media/Dados/Arenda/Claudio/Script/06_Arrecad",
+		"/media/Dados/Dicas/E-cidade/ErroAoGerarDiversos",
+		"/media/Dados/Dicas/PostgreSql/CriacaoUsuario",
+		"/media/Dados/Dicas/PostgreSql/Verifiaca~",
+		"/media/Dados/Dicas/E-cidade/ErroTipoCalculo",
+		"/media/Dados/Dicas/PostgreSql/CriacaoDblink",
+		"/media/Dados/Dicas/PostgreSql/Links",
+		"/media/Dados/Dicas/E-cidade/Insert_PlanoPagadora",
+		"/media/Dados/Dicas/Linux/PaintNoUbuntu",
+		"/media/Dados/Dicas/E-cidade/Como rodar um patche de correção no E-Cidade",
+		"/media/Dados/Dicas/Linux/BloquearListagemDiretorios",
+		"/media/Dados/tor-browser_pt-PT/Browser/start-tor-browser",
+		"/media/Dados/Dicas/Linux/Bat/Debugar Sh",
+		"/media/Dados/tor-browser_pt-PT/start-tor-browser",
+		"/media/Dados/Dicas/Linux/InstalarMysql",
+		"/media/Dados/Dicas/E-cidade/Erros_Cidades"
+	],
+	"find":
+	{
+		"height": 22.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"space",
+			"[\\b]",
+			"\\  ",
+			"\\s+ |",
+			"\\s+",
+			"[\\t  ]",
+			"[\\t ]",
+			"^\\t",
+			"^(\\t+ | +\\t)|[\\t ]+$",
+			"/td",
+			"/td><td>\\2",
+			"\\1",
+			"\\1</td><td>\\2",
+			"space",
+			"remove",
+			"select",
+			"\\t",
+			"\\    ",
+			"\\t",
+			"'\\t\\'",
+			"'\\s\\'",
+			"'\\s\\+$'",
+			"^(\\t)",
+			"^(\\t)$",
+			"^(\\t+ | +\\t)|[\\t ]+$",
+			"space",
+			"trim_trailing_white_space_on_save",
+			"87",
+			"insert",
+			"inser",
+			"266",
+			"issbase",
+			"max",
+			"pre",
+			"preco",
+			"precome",
+			"inserto",
+			"insert",
+			"IN",
+			"in",
+			"teste",
+			"E.M.PROF",
+			"ç",
+			"\"",
+			"\"null\"",
+			"             ",
+			"                 ",
+			"                            ",
+			"                             ",
+			"     ",
+			"      ",
+			"        ",
+			"            ",
+			"              ",
+			"        ",
+			"               ",
+			"                 ",
+			"                     ",
+			"8",
+			"^(\\t+ | +\\t)|[\\t ]+$",
+			"\"",
+			";",
+			"teste",
+			"2894",
+			"update",
+			"insert",
+			"SELECT",
+			"issalvara",
+			"2905",
+			"2933",
+			"select",
+			"2933",
+			"29",
+			"q11_numero",
+			"q02_dtbaix",
+			"teste",
+			"insert",
+			")\n",
+			"2968",
+			"1076",
+			"teste",
+			"insert",
+			"20933",
+			"insert",
+			"UPDATE",
+			"insert",
+			"update",
+			"insert",
+			"inser",
+			"inner",
+			"issbase",
+			"tabativbaixa",
+			"tabativ",
+			"matestoqueini",
+			"20393",
+			"matestoqueini",
+			"cou",
+			"matestoqueini",
+			"matestoqueinimei",
+			"51",
+			" ',",
+			" ",
+			"     	",
+			"       	",
+			"         	",
+			"           	",
+			"update",
+			"upda",
+			"max",
+			"select",
+			"trigge",
+			"issalvara",
+			"issmovalvara",
+			"update",
+			"tabativbaixa",
+			"ativtipo",
+			"issqn.cnae",
+			"ativid",
+			"fc",
+			"11111",
+			"protoco",
+			"protocolo",
+			"caduni",
+			"histcalc",
+			"302",
+			"cadecono",
+			"next",
+			"conlancamval"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": true,
+		"regex": true,
+		"replace_history":
+		[
+			"  ",
+			" ",
+			"|",
+			"\\s",
+			"",
+			" ",
+			"*",
+			"",
+			"*****",
+			"",
+			"'",
+			"null",
+			"),",
+			"",
+			",",
+			"',",
+			"",
+			"mig_mateusleme_rest.cadecono",
+			"42",
+			""
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": false
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 21.0
+	},
+	"input":
+	{
+		"height": 29.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"project": "AlterarSenhaPostgres.sublime-project",
+	"replace":
+	{
+		"height": 40.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 87.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

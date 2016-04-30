@@ -1,0 +1,6 @@
+select
+cast(chr(39) as varchar) as aspas_simples,
+cast(chr(34) as varchar) as aspas_duplas,
+chr(34) as enter,
+cast(chr(32) as varchar) as espaco
+

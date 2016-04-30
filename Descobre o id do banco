@@ -1,0 +1,7 @@
+--Descobre o id do banco. Para cada banco do postgre é criado uma pasta no diretório
+--root@Linux:/var/lib/postgresql/9.2/main/base# ls
+select oid,datname from pg_database;
+
+
+
+pg_dump -U postgres -at tabela_origem -h host_origem banco | psql -h 

@@ -1,0 +1,5 @@
+createdb -T bancoorigem novobanco
+exemplo:
+
+createdb -T e-cidade ecidade_claudio
+

@@ -1,0 +1,7 @@
+http://jotacomm.wordpress.com/tag/postgresql/
+
+
+SQL: Filtragem com WHERE sem problemas com maiúsculo ou minúsculo
+Quando você deseja fazer uma consulta e deseja filtrar os dados com WHERE e acaba se enrolando com letras maiúsculas e minúsculas, existe uma expressão que podemos utilizar no cláusula SQL para solucionar este problema:
+
+SELECT campo1, campo2 FROM tabela WHERE campo1 ~* 'dados'; 

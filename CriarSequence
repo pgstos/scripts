@@ -1,0 +1,48 @@
+CREATE SEQUENCE usuario_seq;
+
+CREATE TABLE usuario
+(
+  id integer DEFAULT NEXTVAL('usuario_seq'),
+  nome varchar(100),
+  CONSTRAINT id_pk PRIMARY KEY (id)
+
+)
+
+http://forum.wmonline.com.br/topic/203179-auto-incremento-no-postgresql/
+
+
+-- Crio a tabela
+CREATE TABLE tabela (
+id integer NOT NULL,
+nota integer
+);
+
+-- Crio a sequência
+CREATE SEQUENCE teste_id_seq
+INCREMENT BY 1
+NO MAXVALUE
+NO MINVALUE
+START 10
+CACHE 1;
+
+-- Relaciona a sequência com a coluna da tabela
+ALTER SEQUENCE tabela_id_seq OWNED BY tabela.id;
+ALTER TABLE tabela ALTER COLUMN id SET DEFAULT nextval('tabela_id_seq'::regclass);
+
+
+Complicado... é... eu sei.
+Mas por sorte Deus deu ao ser humano a preguiça. Foi graças a ela um cara criou um "pseudo-tipo" chamado serial.
+O tipo serial cria um campo integer, cria a sequence e relaciona um ao outro automaticamente. Exemplo:
+
+
+CREATE TABLE tabela (
+id serial NOT NULL,
+nota integer
+);
+
+SELECT *
+    FROM information_schema.sequences
+    WHERE sequence_schema in('public') and sequence_name like '%sequencial%'
+
+
+select nextval(sequencial_id_seq)

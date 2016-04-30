@@ -1,0 +1,52 @@
+--Fazer backup de uma tabela com os dados
+pg_dump -U ecidade  -Fc -n public -t itensdoscontratos -f itensdoscontratos2.pgdump e-mateusleme
+
+
+--Restaurar o backup de uma tabela com os dados. Este comando já cria a tabela não é necessário 
+--exitir a tabela
+pg_restore -U ecidade -t itensdoscontratos -d e-cidade itensdoscontratos3.dump
+
+
+
+
+
+pg_dump -U ecidade -h localhost ecidade_claudio > ecidade_claudio.sql
+
+
+pg_dump -U ecidade -h localhost e-cidade-demo > Backup_e-cidade-demo.sql 2> /home/dbseller/e-cidade-demolog.log
+
+
+psql -U ecidade e-claudio -f e-cidade-2.3.3.sql 2> /tmp/erros.txt
+
+pg
+$ createdb -U ecidade mateusleme161014
+$ psql -U ecidade e-cidade-treinamento -f bck_mleme.sql.sql
+
+
+/home/arenda/Bases/MateusLeme/mateusleme151014log.log
+
+
+--Fazer backup de uma tabela  sem os dados
+pg_dump -U ecidade -h localhost -Fc -t servidornew -f servidornew.sql e-claudio
+
+ 
+--Restaurar o backup de uma tabela sem os dados
+pg_restore -Fc -U ecidade -h 127.0.0.1 -t servidornew -d e-claudio servidornew.sql
+
+
+--Fazer backup de uma tabela com os dados
+pg_dump -Ft e-cidade-demo -f conplanosql.sql
+pg_dump -Ft e-cidade-demo -f conplanoreduzsql.sql
+pg_dump -Ft e-cidade-demo -f conplanoexesql.sql
+
+
+--Restaurar o backup de uma tabela com os dados. Este comando já cria a tabela não é necessário exitir a tabela
+pg_restore -d e-claudio -t conplano1 conplanosql.sql
+pg_restore -d e-claudio -t conplanoreduz1 conplanoreduzsql.sql
+pg_restore -d e-claudio -t conplanoexe1 conplanoexesql.sql
+
+
+
+
+
+psql -U ecidade mateusleme161014 -f mateusleme16102014.sql

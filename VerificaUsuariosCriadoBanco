@@ -1,0 +1,13 @@
+Deverá conectar através do terminal
+psql nomedobanco
+
+\du ou \dg
+
+SELECT usename FROM pg_user;
+
+A tabela pg_user é uma tabela de sistema (_pg) que guarda todos os usuários do PostgreSQL.
+
+
+Também podemos utilizar:
+
+\du ou \dg

@@ -1,0 +1,33 @@
+--Backup
+http://paje.net.br/?p=185
+http://blog.lucascaton.com.br/index.php/2010/05/23/resumo-de-comandos-uteis-do-postgresql/
+http://postgresqlbr.blogspot.com.br/2008/10/esquea-o-comando-show-use-pgsettings.html
+
+--dblink
+http://www.vivaolinux.com.br/dica/Acessando-dois-databases-no-mesmo-SELECT-(PostgreSQL)
+http://pt.wikibooks.org/wiki/PostgreSQL_Pr%C3%A1tico/Imprimir#Replica.C3.A7.C3.A3o
+
+--Createdb
+http://www.devmedia.com.br/criando-bancos-de-dados-no-postgresql-por-dentro/6447
+
+
+http://jquerydicas.blogspot.com.br/2014/01/postgresql-criar-um-banco-de-dados_29.html
+
+
+SELECT bi06_titulo FROM 
+dblink('hostaddr=localhost dbname=claudio_origem user=postgres password=postgres', 'select tablename from pg_tables') 
+AS biblioteca.acervo
+
+
+--Informações de banco
+http://pt.wikibooks.org/wiki/PostgreSQL_Pr%C3%A1tico/Imprimir#Configura.C3.A7.C3.B5es.2FConfigura.C3.A7.C3.B5es_Diversas
+
+http://rubsphp.blogspot.com.br/2011/04/tabelas-e-colunas-no-postgresql.html
+
+http://pt.wikibooks.org/wiki/PostgreSQL_Pr%C3%A1tico/Metadados
+
+
+http://pt.wikibooks.org/wiki/PostgreSQL_Pr%C3%A1tico/Imprimir
+
+
+select bi06_titulo from  biblioteca.acervo

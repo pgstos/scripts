@@ -1,0 +1,25 @@
+http://rafaelsobreira.blogspot.com.br/2012/06/instalando-o-banco-de-dados-postgresql.html
+
+ Para saber a versão do Postgres instalado:
+psql --version
+
+Para startar o Postgres:
+sudo /etc/init.d/postgresql start
+
+Para parar o  Postgres:
+sudo /etc/init.d/postgresql stop
+
+Para reinicar o  Postgres:
+sudo /etc/init.d/postgresql restart
+
+Para recaregar o  Postgres:
+sudo /etc/init.d/postgresql reload
+
+Para forçar o recarregamento do  Postgres:
+sudo /ext/init./postgresql force-reload
+
+Para ver o status do  Postgres:
+sudo /ext/init./postgresql status
+
+Para iniciar o Postgres no boot:
+sudo update-rc.d postgresql enable

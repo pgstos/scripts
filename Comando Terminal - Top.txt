@@ -1,0 +1,53 @@
+Consertando permissões de arquivos e diretórios
+Após manutenção que fiz em meu sistema, o meu /home/$USER ficou com as permissões 777 para arquivos e diretórios. Apesar de não ter problemas funcionais, isso não é nada seguro.
+
+Para resolver esta questão, tive que executar 3 simples comandos para restaurar as permissões, de acordo com o padrão do sistema:
+
+# find /home/$USER/.* -type f -exec chmod 644 '{}' \;
+# find /home/$USER/.* -type d -exec chmod 755 '{}' \;
+# find /home/$USER/* -type d -exec chmod 755 '{}' \;
+
+Explicando:
+
+    find → Comando de busca;
+    /home/$USER/.* → Diretório raiz da busca;
+    -type (f ou d) → Tipo a ser buscado, neste caso: f busca arquivo e d busca diretórios;
+    -exec → Execução do comando, neste caso chmod e suas devidas permissões;
+    {} → Arquivo ou diretório encontrado;
+    \; → Finalização do comando. 
+
+
+Obs.: A variável $USER contém o login do usuário atual.
+
+-=[ "live long and prosper" ]=-
+
+
+Dicas:
+	Sudo: Significa que o processo vai ser executado como superUser
+	apt-get: Gerenciador de pacote do Ubuntu entre o pc local e servidor de aplicação
+	TAB -> Utilizado para autocompletar a palavra pelo terminal. Ex: Fire + TAB = Firefox
+	ls -> Lista o conteúdo de um determinado diretório
+	mkdir -> Criar uma pasta em um determinado diretório
+	rmdir -> Remove uma pasta em um determinado diretório
+	**Digitar diretório automáticamente, basta ter a pasta aberta em modo visual clicar na pasta e arrastar para o terminal com o comando cd
+	
+*Instalar/Desinstalar programa via terminal
+	Instalar:
+		sudo apt-get install nome_programa
+
+		Para cancelar a instalação já em andamento Ctrl+C
+		Para limpar a tela do terminal Ctrl+L
+
+	Remover
+		sudo apt-get remove nome_programa
+
+*Para atualizar a lista de programas no repositório de instalação
+	sudo apt-get update
+	
+*Para instalar as atualizações disponiveis no repositório de instalação
+	sudo apt-get upgrade
+	
+*Manutenção do sistema operacional
+	sudo apt-get autoremove -> Remove programa que estão obsoletos, versões antigas que foram atualizadas e que estão ainda no HD
+	sudo apt-get autoclean -> Limpa o cash do apt-get, ou seja, deleta os pacotes que estão no repositório de instalação
+	sudo apt-get install -f ->Corrigi pacotes quebrados

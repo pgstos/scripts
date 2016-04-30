@@ -1,0 +1,22 @@
+COPY espelho TO '/home/paulo/Documentos/teste.txt' WITH DELIMITER '|';
+
+
+COPY espelho FROM '/home/paulo/Documentos/teste.txt' WITH DELIMITER '|';
+
+
+
+COPY (select c46_seqtranslan,
+	contrans.c45_seqtrans as c46_seqtrans,
+	conhist.c50_codhist as c46_codhist,
+	contranslan.c46_obs,
+	contranslan.c46_obrigatorio,
+	contranslan.c46_descricao,
+	contranslan.c46_ordem,
+	case when conhistdoc.c53_coddoc is null then 0 else conhistdoc.c53_coddoc end as c46_evento
+from contabilidade.contranslan contranslan
+inner join contabilidade.contrans contrans on contrans.c45_seqtrans=contranslan.c46_seqtrans
+inner join contabilidade.conhist conhist on conhist.c50_codhist=contranslan.c46_codhist
+left join contabilidade.conhistdoc on conhistdoc.c53_coddoc=contranslan.c46_evento
+where c46_seqtranslan in(1106,1108,1109,1110,1111)) TO '/home/paulo/Documentos/teste.txt' WITH DELIMITER '|';
+
+

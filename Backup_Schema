@@ -1,0 +1,18 @@
+tar jxvf e-cidade-2.3.3-linux.completo.tar.bz2
+
+createdb -U nobody erpsim261114
+
+pg_restore -U nobody -d erpsim261114 pmclaudio-erpsim-Ter.dmp 2> /home/paulo/Documentos/Claudio/usr/backup/erpsim261114_erro.txt
+
+--exporta o schema
+pg_dump -U nobody erpsim261114 -n mig_erpsim_public 2> /home/paulo/Documentos/Claudio/usr/backup/mig_erpsim_public.sql
+
+
+--Backup e restore do banco erpsim
+pg_dump erpsim261114 -n mig_erpsim_public > mig_erpsim_public.sql
+
+--É necessário excluir o banco
+drop schema mig_erpsim_public cascade
+
+
+psql -h localhost -U ecidade -d e-claudio < mig_erpsim_public.sql 2> mig_erpsim_public_log.log

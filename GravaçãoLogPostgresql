@@ -1,0 +1,26 @@
+1) abra o arquivo "postgresql.conf", que fica na sua pasta "data" (no Bloco de Notas mesmo);
+2) desça até a seção "ERROR REPORTING AND LOGGING";
+3) Nesta seção descomente (retire o # da frente da linha) e/ou altere as seguintes linhas
+
+logging_collector = on
+
+log_directory = 'pg_log'
+
+log_filename = 'postgresql-%Y-%m-%d_%H%M%S.log'
+
+log_line_prefix = '%t %u '
+
+log_statement = 'mod'
+
+4) Após alterar estas linhas, salve o arquivo;
+
+5) pare e inicie o serviço do PostgreSQL.
+
+ 
+
+Os logs ficarão dentro da pasta "pg_log" (dentro da sua pasta "data"), armazenados por dia.
+
+/var/lib/postgresql/9.2/ecidade/pg_log
+
+
+http://www.scriptbrasil.com.br/forum/topic/174333-monitoramento/

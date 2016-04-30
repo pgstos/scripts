@@ -1,0 +1,132 @@
+-- lista todas as sessões ativas.
+select datname,
+       pid,
+       usename,
+       application_name,
+       client_addr,
+       client_hostname,
+       backend_start
+  from pg_stat_activity
+
+
+  --matar a sessão do usuário
+select pg_terminate_backend(procpid);
+  
+--E para eliminar todas as conexões ativas, menos a conexão atual.   
+SELECT pg_terminate_backend(procpid)
+   FROM pg_stat_activity
+  WHERE procpid <> pg_backend_pid();
+  
+ --Informações da conexão corrente.
+ SELECT inet_client_addr(), inet_client_port(), inet_server_addr(), inet_server_port()
+  
+ --Dados do usuário e mudança de usuário.
+ SELECT current_user, session_user, user;
+  
+--Consulta a todas as informações de sessão:  
+SELECT 'BANCO    : ' || current_database() AS INFO UNION SELECT 'ESQUEMA  : ' || current_schema() AS INFO UNION
+SELECT 'ESQUEMAS : ' || CAST(current_schemas(true) AS VARCHAR) AS INFO UNION
+SELECT 'USUARIO  : ' || current_user AS INFO UNION
+SELECT 'SES. USR.: ' || session_user AS INFO UNION
+SELECT 'USER     : ' || user AS INFO UNION
+SELECT 'CLI. ADR.: ' || inet_client_addr() AS INFO UNION
+SELECT 'CLI. POR.: ' || inet_client_port() AS INFO UNION
+SELECT 'SER. ADR.: ' || inet_server_addr() AS INFO UNION
+SELECT 'SER. POR.: ' || inet_server_port() AS INFO UNION
+SELECT 'VERSAO   : ' || version() AS INFO;
+
+
+
+-- apresentar a versão do banco
+select version();
+ 
+-- apresentar o nome do banco de dados corrente
+select current_database();
+ 
+-- apresentar o nome do esquema corrente
+select current_schema();
+ 
+-- apresentar os nomes dos esquemas no caminho de procura incluindo, opcionalmente (argumento = false), os esquemas implícitos.
+select current_schemas(true);
+ 
+-- apresentar o nome do usuário do contexto de execução corrente.
+select current_user;
+ 
+-- apresentar o nome do usuário da sessão
+select session_user;
+ 
+-- apresentar o ip da conexão remota
+select inet_client_addr();
+ 
+-- apresentar a porta da conexão remota
+select inet_client_port();
+ 
+-- apresentar o ip da conexão local
+select inet_server_addr();
+ 
+-- apresentar a porta da conexão local
+select inet_server_port();
+
+
+
+SELECT current_database();
+
+ current_database
+------------------
+ template1
+
+=> SELECT current_schema();
+
+ current_schema
+----------------
+ public
+
+=> SELECT current_schemas(TRUE);
+
+   current_schemas
+---------------------
+ {pg_catalog,public}
+
+=> SELECT CURRENT_USER AS usuario;
+
+ usuario
+----------
+ postgres
+
+=> SELECT inet_client_addr();
+
+ inet_client_addr
+------------------
+ 192.168.75.1
+
+=> template1=# SELECT inet_client_port();
+
+ inet_client_port
+------------------
+            16522
+
+=> SELECT inet_server_addr();
+
+ inet_server_addr
+------------------
+ 192.168.75.128
+
+=> SELECT inet_server_port();
+
+ inet_server_port
+------------------
+             5432
+
+=> SELECT SESSION_USER as usuario;
+
+ usuario
+----------
+ postgres
+
+=> SELECT USER as usuario;
+
+ usuario
+----------
+ postgres
+
+=> SELECT version() AS versao;

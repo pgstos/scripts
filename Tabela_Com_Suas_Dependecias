@@ -1,0 +1,59 @@
+--Listar as tabelas ligadas por chave estrangeira a certa tabela.
+
+SELECT tab_pk.relname AS tab_PK, tab_fk.relname AS tab_FK
+FROM pg_class tab_pk
+JOIN pg_constraint     ON tab_pk.oid=pg_constraint.confrelid
+JOIN pg_class tab_fk  ON pg_constraint.conrelid=tab_fk.oid
+and tab_fk.relname='acordo';
+
+
+
+
+SELECT sch1.nspname, tab1.relname, sch2.nspname, tab2.relname
+FROM pg_namespace sch1 JOIN pg_class tab1 ON sch1.oid=tab1.relnamespace
+JOIN pg_constraint
+ON tab1.oid=pg_constraint.confrelid
+JOIN pg_class tab2
+ON pg_constraint.conrelid=tab2.oid
+JOIN pg_namespace sch2
+ON tab2.relnamespace=sch2.oid
+where tab1.relname='cgm'
+ORDER BY sch1.nspname, tab1.relname, sch2.nspname, tab2.relname
+
+
+
+
+SELECT   
+  a.attname AS atributo,   
+  clf.relname AS tabela_ref,   
+  af.attname AS atributo_ref   
+FROM pg_catalog.pg_attribute a   
+  JOIN pg_catalog.pg_class cl ON (a.attrelid = cl.oid AND cl.relkind = 'r')
+  JOIN pg_catalog.pg_namespace n ON (n.oid = cl.relnamespace)   
+  JOIN pg_catalog.pg_constraint ct ON (a.attrelid = ct.conrelid AND   
+       ct.confrelid != 0 AND ct.conkey[1] = a.attnum)   
+  JOIN pg_catalog.pg_class clf ON (ct.confrelid = clf.oid AND clf.relkind = 'r')
+  JOIN pg_catalog.pg_namespace nf ON (nf.oid = clf.relnamespace)   
+  JOIN pg_catalog.pg_attribute af ON (af.attrelid = ct.confrelid AND   
+       af.attnum = ct.confkey[1])   
+WHERE   
+  cl.relname = 'clabensconplano'
+
+
+
+SELECT sch1.nspname as schema_pk, tab1.relname as tabela_pk, sch2.nspname as schema_fk,
+tab2.relname as tabela_fk
+FROM pg_namespace sch1 JOIN pg_class tab1 ON sch1.oid=tab1.relnamespace
+JOIN pg_constraint
+ON tab1.oid=pg_constraint.confrelid
+JOIN pg_class tab2
+ON pg_constraint.conrelid=tab2.oid
+JOIN pg_namespace sch2
+ON tab2.relnamespace=sch2.oid
+ORDER BY sch1.nspname, tab1.relname, sch2.nspname, tab2.relname
+limit 10
+
+
+
+
+

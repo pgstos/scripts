@@ -1,0 +1,33 @@
+
+
+http://www.fonini.net/blog/gerar-numero-sequencial-em-query-do-postgresql/
+	
+SELECT row_number() OVER (PARTITION by 0) as _seq, id, FROM pessoa
+
+A sequência retornada começa em 1. Se quiser que ela comece em 0, basta adaptar a consulta:
+	
+SELECT row_number() OVER (PARTITION by 0) - 1 as _seq, id, nome FROM pessoa
+
+Caso você utilize uma cláusula ORDER BY, os números gerados provavelmente estarão fora de ordem. Para corrigir este problema, basta repetir a cláusula ORDER BY dentro da função OVER, ficando como no exemplo abaixo:
+1
+2
+3
+	
+SELECT row_number() OVER (PARTITION by 0 ORDER BY data) - 1 as _seq,
+id, nome FROM pessoa
+ORDER BY data
+
+
+select generate_series(1,100) as sequencial
+
+
+--Gerar sequencial e reinicia a contagem
+select t6.guia,t6.numero as k00_numpre,row_number() OVER (PARTITION by t6.guia ORDER BY t6.guia) as k00_numpar
+from mig_erpsim_public.item_lancamento t1
+inner join cadastro.iptubase t2 on t2.j01_matric=t1.cadastro_imobiliario
+--inner join cadastro.iptuant t3 on t3.j40_matric=t2.j01_matric
+--inner join mig_erpsim_public.lancamento  t4 on t4.id=t1.lancamento
+inner join mig_erpsim_public.guia t5 on t5.lancamento=t1.lancamento and t5.item_lancamento=t1.id
+inner join mig_erpsim_public.guia_parcela t6 on t6.guia=t5.id
+where t5.exercicio_guia=2014 and t1.valor_pago=0 and t5.inicio_validade='2014-01-20 10:48:43' and upper(trim(parcela_unica)) is null
+order by 1,3

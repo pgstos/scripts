@@ -1,0 +1,18 @@
+http://imasters.com.br/artigo/10644/postgresql/triggers-no-postgresql/
+
+--DESABILITAR TODAS AS TRIGGERS DE UMA TABELA
+ALTER TABLE issqn.issbase  DISABLE TRIGGER ALL 
+
+--HABIITAR TODAS AS TRIGGERS DE UMA TABELA
+ALTER TABLE issqn.issbase  ENABLE TRIGGER ALL
+
+--DESABILITAR UMA TRIGGERS ESPECÍFICA DE UMA TABELA
+ALTER TABLE issqn.issbase DISABLE TRIGGER tg_atualiza_issbaseintegracaoexterna;
+
+--HABILITAR UMA TRIGGERS ESPECÍFICA DE UMA TABELA
+ALTER TABLE issqn.issbase DISABLE TRIGGER tg_atualiza_issbaseintegracaoexterna;
+
+
+SELECT * FROM INFORMATION_SCHEMA.TRIGGERS WHERE trigger_name='tg_atualiza_issbaseintegracaoexterna'
+
+SELECT * FROM PG_CATALOG.PG_TRIGGER where tgname='tg_atualiza_issbaseintegracaoexterna'

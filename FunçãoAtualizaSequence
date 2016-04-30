@@ -1,0 +1,97 @@
+select 'SELECT setval(''' || sequence_name
+		||''',(SELECT CASE WHEN MAX('||(strpos(reverse(substring(reverse(sequence_name),5,length(sequence_name))),'_')+1)
+		||') IS NULL THEN 1 ELSE MAX('||(strpos(reverse(substring(reverse(sequence_name),5,length(sequence_name))),'_')+1)
+		||') END FROM '|| sequence_schema|| '.'||SPLIT_PART(sequence_name,'_',1)||'),true);'
+		as query
+--sequence_name,
+--reverse(substring(reverse(sequence_name),5,length(sequence_name))),
+--substring(reverse(substring(reverse(sequence_name),5,length(sequence_name))),
+--strpos(reverse(substring(reverse(sequence_name),5,length(sequence_name))),'_')+1,length(sequence_name)),
+--SPLIT_PART(sequence_name,'_',1) as tabela
+from information_schema.sequences
+WHERE reverse(substring(reverse(sequence_name),1,4))='_seq'
+and SPLIT_PART(sequence_name,'_',1) in (SELECT distinct relname
+FROM pg_class 
+WHERE relkind = 'r') 
+
+
+
+
+
+CREATE OR REPLACE FUNCTION atualizarTodosSequenciais() RETURNS integer AS $$
+DECLARE
+tupla RECORD;
+BEGIN
+		FOR tupla IN ( 
+		
+		SELECT 'SELECT setval(''' || relname
+				||''',(SELECT CASE WHEN MAX('||(strpos(reverse(substring(reverse(relname),5,length(relname))),'_')+1)
+				||') IS NULL THEN 1 ELSE MAX('||(strpos(reverse(substring(reverse(relname),5,length(relname))),'_')+1)
+				||') END FROM '|| n.nspname|| '.'||SPLIT_PART(relname,'_',1)||'),true);'
+				as query		
+		FROM pg_class c 
+		JOIN pg_namespace n ON c.relnamespace = n.oid 
+		WHERE n.nspname='contabilidade' and c.relkind = 'S' AND n.nspname !~ '^(pg_.*|information_schema)$'
+		and reverse(substring(reverse(relname),1,4))='_seq' 
+		and SPLIT_PART(relname,'_',1) in (SELECT distinct relname
+										   FROM pg_class 
+										   WHERE relkind = 'r'
+										  )  
+		) LOOP
+		EXECUTE tupla.query;
+		END LOOP;
+		RETURN 1;
+END;
+$$ LANGUAGE plpgsql;
+
+
+SELECT atualizarTodosSequenciais();
+
+
+
+CREATE OR REPLACE FUNCTION atualizarTodosSequenciais() RETURNS integer AS $$
+DECLARE
+tupla RECORD;
+BEGIN
+		FOR tupla IN ( 
+		
+		SELECT DISTINCT
+		'SELECT setval(''' || n.nspname || '.' ||c.relname||'_'||ab.attname||'_seq'
+		||''',(SELECT CASE WHEN MAX('||ab.attname||') IS NULL THEN 1 ELSE MAX('||ab.attname||') END FROM '|| n.nspname|| '.'||c.relname||'),true);'
+		as query
+		FROM pg_class c
+		JOIN pg_namespace n ON c.relnamespace = n.oid AND n.nspname NOT LIKE 'pg_%'
+		JOIN pg_index i ON i.indrelid=c.oid AND i.indisprimary='t'
+		JOIN pg_attribute ab ON ab.attrelid=c.oid AND ab.attisdropped='f' AND i.indkey[0]=ab.attnum
+		AND i.indkey[1] IS NULL
+		WHERE c.relname IN (SELECT SPLIT_PART(relname,'_',1) FROM pg_class WHERE relkind = 'S') 
+		) LOOP
+		EXECUTE tupla.query;
+		END LOOP;
+		RETURN 1;
+END;
+$$ LANGUAGE plpgsql;
+
+
+SELECT atualizarTodosSequenciais();
+
+
+SELECT *
+    FROM information_schema.sequences
+    WHERE sequence_schema in('protocolo') and sequence_name like '%cgm%'
+
+
+select * from cgm_z01_numcgm_seq
+
+SELECT SPLIT_PART(relname,'_',1)
+FROM pg_class WHERE relkind = 'S' and relname='cgm_z01_numcgm_seq'
+
+
+select max(z01_numcgm) from protocolo.cgm
+
+
+
+
+SELECT setval('protocolo.cgm',(SELECT CASE WHEN MAX(z01_numcgm) IS NULL THEN 1 ELSE MAX(z01_numcgm) END FROM protocolo.cgm),true);		
+
+

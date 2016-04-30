@@ -1,0 +1,7 @@
+Para encontrar o espaço ocupado pelas tabelas.
+SELECT relname, relpages*8 as Kb FROM pg_class WHERE relname = ‘tabela’;
+
+ou
+SELECT relname, (relpages*8)/1024 as MB FROM pg_class WHERE relname = ‘tabela’;
+
+Obs.: A coluna relpages esta sendo multiplica por 8 porque cada page tem o equivalente a 8k, entao é só multiplicar para saber o tamanho em kb.

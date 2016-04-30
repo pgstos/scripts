@@ -1,0 +1,25 @@
+
+
+UPDATE servicos s SET custo = total FROM composicoes c
+WHERE s.tabela = c.tabela AND s.servico = c.servico
+
+
+update registro_duplicado t1 set bairro=t3.bairro
+from registro_duplicado t2
+inner join mig_erpsim_public.logradouro t3 on t3.id=t2.id
+where t1.id=t2.id and  t3.bairro is not null;
+
+
+update pessoal.rhpesdoc t1 set rh16_pis=t3.pis_pasep
+from pessoal.rhpesdoc t2
+inner join servidornew t3 on cast(t3.matricula as int4)=cast(t2.rh16_regist as int4)
+where t1.rh16_regist=t2.rh16_regist
+
+
+
+update cadastro.iptuender t1 set j43_ender= t3.j14_nome
+from mig_erpsim_public.cadastro_imobiliario t2
+inner join  mig_erpsim_public.cadastro_imobiliario filho on substring(filho.inscricao_cadastral,1,14)||'.0000' = t2.inscricao_cadastral
+inner join cadastro.ruas t3 on t3.j14_codigo=t2.logradouro_correspondencia
+inner join cadastro.lote lote on lote.j34_idbql=t2.id 
+where filho.id=t1.j43_matric

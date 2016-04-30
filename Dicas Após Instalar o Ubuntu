@@ -1,0 +1,30 @@
+REPOSITÓRIOS
+
+sudo add-apt-repository ppa:cairo-dock-team/ppa
+sudo add-apt-repository ppa:noobslab/indicators
+sudo add-apt-repository ppa:noobslab/themes
+sudo add-apt-repository ppa:noobslab/icons
+sudo add-apt-repository ppa:noobslab/icons2
+sudo add-apt-repository ppa:teejee2008/ppa
+sudo add-apt-repository ppa:atareao/atareao
+sudo add-apt-repository ppa:elementary-os/daily
+sudo add-apt-repository ppa:elementary-os/unstable-upstream
+sudo add-apt-repository ppa:jconti/recent-notifications
+sudo add-apt-repository ppa:tsbarnes/indicator-keylock
+sudo add-apt-repository ppa:tualatrix/ppa
+sudo add-apt-repository ppa:moka/stable
+sudo add-apt-repository ppa:numix/ppa
+sudo add-apt-repository ppa:captiva/ppa
+sudo apt-get update
+
+INSTALANDO TEMAS
+
+sudo apt-get install faenza-icon-theme numix-icon-theme numix-icon-theme-circle numix-gtk-theme shimmer-themes delorean-dark moka-icon-theme moka-gtk-theme faba-icon-theme faba-mono-icons faba-colors square-icons square-beam-icons mac-ithemes-v3 mac-icons-v3 captiva-icon-theme
+
+INSTALANDO APLICATIVOS PARA PERSONALIZAÇÃO
+
+sudo apt-get install ubuntu-tweak wallch cairo-dock cairo-dock-plug-ins screenlets screenlets-pack-all docky compiz compizconfig-settings-manager compiz-plugins conky conky-all conky-manager
+
+PESQUISA DE CÓDIGOS ZIP
+
+http://www.levoyageur.net/forecasts.html

@@ -1,0 +1,30 @@
+http://jotacomm.wordpress.com/2009/08/16/usando-o-dblink-para-interligar-dois-bancos-postgresql/
+
+
+
+acessar o diretório
+
+/usr/share/postgresql/9.2/extension/
+
+Executar o comando abaixo dentro do banco
+
+CREATE EXTENSION dblink;
+
+
+Depois de criando a link, deverá criar a conexão com o banco
+
+SELECT dblink_connect('conexao','host=localhost port=5432 user=postgres dbname=e-cidade-demo');
+
+ SELECT tab01.z01_numcgm as codigo,tab02.z01_numcgm as codigo 
+ FROM protocolo.cgm tab01 
+ INNER JOIN (SELECT * FROM dblink('conexao','select z01_numcgm from protocolo.cgm') AS resultado(z01_numcgm integer)) 
+ tab02 ON tab01.z01_numcgm=tab02.z01_numcgm
+
+Fechar a conexão
+SELECT dblink_disconnect(‘conexao’);
+
+--Não é possível realizar o select *. É necessário passar os campos e os tipos de campos senão irá apresentar a mensagem
+--"SQL Error [42601]: ERRO: uma lista de definição de colunas é requerida para funções que retornam "record""
+SELECT * 
+FROM dblink( 'host=192.168.0.179 port=5432 user=ecidade password=ecidade dbname=e-cidade-demo', 
+' SELECT rh30_codreg,rh30_descr,rh30_regime FROM pessoal.rhregime ' ) as regime (rh30_codreg varchar, rh30_descr varchar, rh30_regime varchar) 

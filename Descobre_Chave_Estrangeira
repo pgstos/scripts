@@ -1,0 +1,10 @@
+--Descobre a tabela e suas foreign key e foreign key
+SELECT pg_class.relname AS nome_da_tabela,
+pg_constraint.conname ad nome_restricao,
+pg_get_constraintdef(pg_constraint.oid) AS definicao_da_restricao
+FROM pg_namespace JOIN pg_class ON pg_namespace.oid=pg_class.relnamespace
+JOIN pg_constraint ON pg_class.oid=pg_constraint.conrelid
+WHERE --pg_namespace.nspname='configuracoes'
+ pg_class.relkind='r' and pg_class.relname='clabensconplano'
+ORDER BY pg_class.relname;
+

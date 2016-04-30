@@ -1,0 +1,10 @@
+select 'coutinho.php@gmail.com' ~ '@'
+
+select 'coutinho@gmail.com' similar to '%@%.%'
+
+select POSITION('@' in 'pgstos@yahoo.com.br')
+
+
+select z01_numcgm,z01_email
+from protocolo.cgm cgm
+where z01_email like '%@%.%' and length(trim(z01_cgccpf))=11

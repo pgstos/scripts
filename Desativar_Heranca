@@ -1,0 +1,4 @@
+ set sql_inheritance to on
+
+
+ set sql_inheritance to off

@@ -1,0 +1,76 @@
+--Descobre o schema
+SELECT table_catalog,table_schema,table_name
+    FROM information_schema.tables
+    WHERE 
+     table_type = 'BASE TABLE'
+
+--Localiza campo na tabela com seu schema
+select c.schemaname as schema,
+c.relname as tabela,
+a.attname as "Column",
+pg_catalog.format_type(a.atttypid, a.atttypmod) as "Datatype"  
+from pg_catalog.pg_attribute a
+inner join pg_stat_user_tables c on a.attrelid = c.relid
+WHERE a.attname='ov02_sequencial' and
+a.attnum > 0 AND
+NOT a.attisdropped
+order by c.relname, a.attname
+
+--Verifica a tabela e o esquema
+select schemaname as schema,relname as tabela 
+from pg_stat_user_tables 
+where relname='bairro'
+
+
+
+http://rubsphp.blogspot.com.br/2011/04/tabelas-e-colunas-no-postgresql.html
+Select * from pg_tables Where tableowner = 'postgres'
+
+
+
+
+--Tabelas, donos, comentários, registros e tablespaces de um schema
+ SELECT c.relname as tabela, 
+ pg_catalog.pg_get_userbyid(c.relowner) AS dono, 
+ pg_catalog.obj_description(c.oid, 'pg_class') AS comentario, reltuples::integer as registros,
+ (SELECT spcname FROM pg_catalog.pg_tablespace pt WHERE pt.oid=c.reltablespace) AS tablespace
+ FROM pg_catalog.pg_class c
+ LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+ WHERE c.relkind = 'r' AND nspname='public'
+ ORDER BY c.relname
+
+--Dicas
+http://ribafs.wordpress.com/2006/12/22/podutividade-no-desenvolvimento-web/
+http://pt.wikibooks.org/wiki/PostgreSQL_Pr%C3%A1tico/Metadados
+
+
+SELECT n.nspname as "Schema",
+c.relname as "Name",
+CASE c.relkind WHEN 'r' THEN 'table' WHEN 'v' THEN 'view' WHEN 'i' THEN 'index' WHEN 'S' THEN 'sequence' WHEN 's' THEN 'special' END as "Type",
+pg_catalog.pg_get_userbyid(c.relowner) as "Owner"
+FROM pg_catalog.pg_class c
+LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+WHERE c.relkind IN ('r','v','S','')
+AND n.nspname <> 'pg_catalog'
+AND n.nspname <> 'information_schema'
+AND n.nspname !~ '^pg_toast'
+AND pg_catalog.pg_table_is_visible(c.oid)
+ORDER BY 1,2;
+
+
+
+SELECT * FROM pg_catalog.pg_tables
+WHERE schemaname NOT IN ('pg_catalog', 'information_schema', 'pg_toast')
+ORDER BY schemaname, tablename
+
+--Tamanho das tabelas no PostgreSQL
+SELECT esquema, tabela,
+       pg_size_pretty(pg_relation_size(esq_tab)) AS tamanho,
+       pg_size_pretty(pg_total_relation_size(esq_tab)) AS tamanho_total
+  FROM (SELECT tablename AS tabela,
+               schemaname AS esquema,
+               schemaname||'.'||tablename AS esq_tab
+          FROM pg_catalog.pg_tables
+         WHERE schemaname NOT
+            IN ('pg_catalog', 'information_schema', 'pg_toast') ) AS x
+ ORDER BY pg_total_relation_size(esq_tab) DESC;

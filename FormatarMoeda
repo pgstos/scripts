@@ -1,0 +1,2 @@
+
+select TRIM( to_char(1534.8, '9G999G999D99') )

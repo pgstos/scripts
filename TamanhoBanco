@@ -1,0 +1,41 @@
+--Lista todos os bancos
+SELECT datname,pg_size_pretty(pg_database_size(datname)) FROM pg_database;
+
+--Lista o banco corrente(logado)
+SELECT pg_size_pretty(pg_database_size(current_database()));
+
+--Lista o tamanho do banco passando por parâmetro
+SELECT pg_size_pretty(pg_database_size('nome_do_banco'));
+
+
+Saber quantidade de registros no banco inteiro:
+SELECT sum(C.reltuples)::int
+FROM pg_class C
+WHERE c.relkind = ‘r’::”char”
+
+Saber quantidade de registros por tabela:
+SELECT n.nspname AS schemaname, c.relname AS tablename, C.reltuples::int AS Registros
+FROM pg_class c
+LEFT JOIN pg_namespace n ON n.oid = c.relnamespace
+LEFT JOIN pg_tablespace t ON t.oid = c.reltablespace
+WHERE c.relkind = ‘r’::”char”
+AND nspname NOT IN
+(‘dbateste’,’information_schema’,’pg_catalog’,’pg_temp_1′,’pg_toast’,’postgres’,’publico’,’public’)
+ORDER BY n.nspname
+
+Saber quantidade de registros por schema:
+SELECT n.nspname, sum(c.reltuples)::int
+FROM pg_class c
+LEFT JOIN pg_namespace n ON n.oid = c.relnamespace
+WHERE c.relkind = ‘r’::”char”
+AND nspname NOT IN
+(‘dbateste’,’information_schema’,’pg_catalog’,’pg_temp_1′,’pg_toast’,’postgres’,’publico’,’public’)
+GROUP BY n.nspname
+
+Saber quantidade de registros de um determinado schema
+SELECT n.nspname, sum(c.reltuples)::int
+FROM pg_class c
+LEFT JOIN pg_namespace n ON n.oid = c.relnamespace
+WHERE c.relkind = ‘r’::”char”
+AND nspname = ‘aaa’
+GROUP BY n.nspname

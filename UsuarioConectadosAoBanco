@@ -1,0 +1,5 @@
+--Informação sobre usuários conectados
+SELECT * FROM pg_stat_activity;
+
+--Qtde de usuários conectados por banco
+SELECT usename,count(*) FROM pg_stat_activity GROUP BY usename ORDER BY count(*) DESC;

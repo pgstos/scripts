@@ -1,0 +1,15 @@
+select to_ascii('éãêáóÃãÂâ') where 'uma maca' = lower(to_ascii('Uma Maçã')); 
+
+
+
+
+select p.nome,p.nome_fantasia,p.nome_completo 
+from mig_public.pessoa p
+left outer join mig_siap.equipe_integrante e on to_ascii(e.nome)=to_ascii(p.nome)
+where e.nome='Yara Lúcia Meireles de Oliveira'
+
+
+
+8. Para fazer o ORDER BY colocar as palavras com acento junto as sem acento. Não considerar o acento na ordenação.
+
+SELECT * FROM pessoa ORDER BY lower(translate(nomepessoa, ‘ÁÀÂÃÄáàâãäÉÈÊËéèêëÍÌÎÏíìîïÓÒÕÔÖóòôõöÚÙÛÜúùûüÇç’, ‘AAAAAaaaaaEEEEeeeeIIIIiiiiOOOOOoooooUUUUuuuuÇc’));

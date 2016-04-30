@@ -1,0 +1,136 @@
+1. AGE()
+A função age(), tem como objetivo identificar a diferença entre duas datas ou a data atual e a data passada por parâmetro.
+Declarações das funções: age(timestamp dataHora) e age(timestamp dataHoraFinal, timestamp dataHoraInicial).
+Tipo de retorno: interval
+Exemplo:
+SELECT AGE(TIMESTAMP '2001-01-21');
+SELECT AGE(TIMESTAMP '2011-05-21', TIMESTAMP '2001-01-11');.
+
+
+
+2. CURRENT_DATE, CURRENT_TIME e CURRENT_TIMESTAMP
+As funções current_date, current_time e current_timestamp retornam data, hora e um timestamp respectivamente. A função current_timestamp funciona exatamente igual a função now().
+
+Declarações das funções: current_date, current_time e current_timestamp.
+Tipo de retorno: date, time with time zone e timestamp with time zone.
+Exemplo:
+SELECT CURRENT_DATE, CURRENT_TIME, CURRENT_TIMESTAMP;to_char(CURRENT_DATE,'dd/mm/yyyy'),TO_CHAR(current_timestamp, 'HH24:MI:SS');
+
+
+3. DATE_PART
+A função date_part retorna subcampo desejado que constará na data informada, suponha que deseja saber apenas o dia do mês de uma data qualquer, essa função será útil. Essa função é equivalente a função extract.
+Declaração da função: date_part(text, timestamp) e date_part(text, interval).
+Tipo de retorno: double precision.
+Exemplo:
+select date_part('year', timestamp '2012-08-02 19:18:21');
+-- Extraindo ANO - Resultado: 2012
+select date_part('month', timestamp '2012-08-02 19:18:21');
+-- Extraindo MÊS - Resultado: 8
+select date_part('day', timestamp '2012-08-02 19:18:21');
+-- Extraindo DIA - Resultado: 2
+select date_part('hour', timestamp '2012-08-02 19:18:21');
+-- Extraindo HORA - Resultado: 19
+select date_part('minute', timestamp '2012-08-02 19:18:21');
+-- Extraindo MINUTO - Resultado: 18
+select date_part('second', timestamp '2012-08-02 19:18:21');
+-- Extraindo SEGUNDO - Resultado: 21
+select date_part('week', timestamp '2012-08-02 19:18:21');
+-- Extraindo SEMANA do ANO - Resultado: 31
+select date_part('millennium', timestamp '2012-08-02');
+-- Extraindo MILÊNIO - Resultado: 3
+select date_part('century', timestamp '2012-08-02');
+-- Extraindo SÉCULO - Resultado: 21
+select date_part('decade', timestamp '2012-08-02');
+-- Extraindo ANO dividido por 10 - Resultado: 201
+ 
+-- O dia da semana (0 - 6; Domingo é 0) (para valores timestamp apenas).
+-- A numeração do dia da semana da função date_part e extract (0 a 6) é
+-- diferente da numeração do dia da semana da função to_char (1 a 7).
+select date_part('dow', timestamp '2012-08-05') as Domingo; -- Resultado: 0
+select to_char(timestamp '2012-08-05','D') as Domingo;      -- Resultado: 1
+ 
+-- O dia do ano (1 - 365/366) (para valores timestamp apenas).
+-- A numeração do dia do ano da função date_part e extract (1 a 366)
+-- é igual a numeração do dia do ano da função to_char (1 a 366).
+select date_part('doy', timestamp '2012-08-02') as DIA; -- Resultado: 215
+select to_char(timestamp '2012-08-02', 'DDD') as DIA; -- Resultado: 215
+ 
+-- O campo segundos, incluindo a parte fracionária. Inclui os segundos,
+-- e não apenas a fração de segundos. Os milisegundos multiplicado por mil (1.000).
+-- Os microsegundos multiplicado por 1 milhão (1.000.000)
+select date_part('milliseconds', timestamp '2012-08-02 19:18:21.951');
+-- Resultado: 21951
+select date_part('microseconds', timestamp '2012-08-02 19:18:21.951');
+-- Resultado: 21951000
+ 
+-- Retorna o trimestre do ano (1 - 4) onde o dia se encontra
+-- (para valores timestamp apenas).
+select date_part('quarter', timestamp '2012-08-02 19:18:21');
+-- Resultado: 3
+ 
+-- Retorna a quantidade de segundos no período informado. Para valores
+-- date e timestamp, o número de segundos desde 1970-01-01 00:00:00-00
+-- (pode ser negativo).
+-- Para valores interval, o número total de segundos do intervalo.
+select date_part('epoch', timestamp '2012-08-02 19:18:21');
+-- Resultado: 1343945901
+-- Para converter de volta um valor de época para um valor de carimbo do tempo
+select TIMESTAMP WITH TIME ZONE 'epoch' + 1343945901 * interval '1 second';
+-- Resultado: '2012-08-02 19:18:21-03'
+
+
+4. DATE_TRUNC
+A função date_trunc trunca a partir de uma precisão informada. Valores do tipo date e time são convertidos automaticamente em timestamp ou interval, respectivamente.
+Declaração da função: date_trunc(text, timestamp). Os valores válidos para o parâmetro text são: microseconds, milliseconds, second, minute, hour, day, week, month, year, decade, century e millennium.
+Tipo de retorno: timestamp.
+Exemplo:
+select date_trunc('day', TIMESTAMP '2012-08-02 19:18:21');
+-- Resultado: 2012-08-02 00:00:00
+select date_trunc('year', TIMESTAMP '2012-08-02 19:18:21');
+-- Resultado: 2012-01-01 00:00:00
+
+5. EXTRACT
+A função extract retorna subcampos dos valores de data e hora. Essa função é equivalente a função date_part. A função extract é voltada principalmente para o processamento computacional. Para formatar valores de data e hora para exibição.
+Declaração da função: extract(campo from timestamp) e extract(campo from interval). Os valores válidos para o parâmetro campo são: microseconds, milliseconds, second, minute, hour, day, week, month, year, decade, century, millennium, quarter, epoch, doy e dow.
+Tipo de retorno: double precision
+Exemplo:
+select extract(YEAR FROM TIMESTAMP '2012-08-02 19:18:21');
+-- Extraindo ANO - Resultado: 2012
+select extract(MONTH FROM TIMESTAMP '2012-08-02 19:18:21');
+-- Extraindo MÊS - Resultado: 8
+select extract(DAY FROM TIMESTAMP '2012-08-02 19:18:21');
+-- Extraindo DIA - Resultado: 2
+select extract(HOUR FROM TIMESTAMP '2012-08-02 19:18:21');
+-- Extraindo HORA - Resultado: 19
+select extract(MINUTE FROM TIMESTAMP '2012-08-02 19:18:21');
+-- Extraindo MINUTO - Resultado: 18
+select extract(SECOND FROM TIMESTAMP '2012-08-02 19:18:21');
+-- Extraindo SEGUNDO - Resultado: 21
+select extract(WEEK FROM TIMESTAMP '2012-08-02 19:18:21');
+-- Extraindo SEMANA do ANO - Resultado: 31
+select extract(MILLENNIUM FROM TIMESTAMP '2012-08-02');
+-- Extraindo MILÊNIO - Resultado: 3
+select extract(CENTURY FROM TIMESTAMP '2012-08-02');
+-- Extraindo SÉCULO - Resultado: 21
+select extract(DECADE FROM TIMESTAMP '2012-08-02');
+-- Extraindo ANO dividido por 10 - Resultado: 201
+
+6. NOW
+A função now é muito conhecida e utilizada no cotidiano, ela retorna a data e hora corrente do banco de dados. Essa função é equivalente a current_timestamp.
+Declaração da função: now().
+Tipo de retorno: timestamp with time zone.
+Exemplo:
+select now(); -- Resultado: '2012-08-02 16:10:11.256-03'
+
+7. OVERLAPS
+Além das funções citadas, achei interessante comentar sobre o operador OVERLAPS now é muito conhecida e utilizada no cotidiano, ela retorna a data e hora corrente do banco de dados. Essa função é equivalente a current_timestamp. Esse operador resulta em verdadeiro quando dois períodos de tempo se sobrepõem e falso quando não se sobrepõem. Os pontos limites podem ser especificados como pares de datas, horas, ou carimbo do tempo; ou como data, hora ou carimbo do tempo seguido por um intervalo.
+Declaração da função: ( inicio1, fim1 ) OVERLAPS ( inicio2, fim2 ) e ( inicio1, duração1 ) OVERLAPS ( inicio2, duração2 ).
+Tipo de retorno: boolean.
+Exemplo:
+SELECT (DATE '2012-01-01', DATE '2012-12-31') OVERLAPS
+       (DATE '2011-08-30', DATE '2012-08-30');
+-- Resultado: t (Verdadeiro)
+SELECT (DATE '2012-01-08', INTERVAL '50 days') OVERLAPS
+       (DATE '2012-12-01', DATE '2013-02-15');
+-- Resultado: f (Falso)
+

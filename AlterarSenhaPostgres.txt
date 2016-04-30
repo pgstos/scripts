@@ -1,0 +1,7 @@
+sudo passwd postgres
+
+--Definir senha do usuário postgres do banco e não do ubuntu
+alter role postgres encrypted password ‘a senha que você quiser’;
+
+
+alter role postgres encrypted password ‘root’;

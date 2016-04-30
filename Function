@@ -1,0 +1,21 @@
+http://susviela.wordpress.com/2013/05/14/adicionando-colunas-em-postgresql/
+
+
+--Neste exemplo é adicionada a coluna codigo do tipo integer em todas as tabelas do esquema public. 
+--É uma função bem simples, agora é só você adaptar para o seu caso.
+
+CREATE OR REPLACE FUNCTION f_adiciona_coluna()
+RETURNS boolean AS $$
+DECLARE
+lista RECORD;
+BEGIN
+FOR lista IN SELECT tablename FROM pg_tables WHERE schemaname=’public’     ORDER BY tablename LOOP
+EXECUTE ‘ALTER TABLE ‘ || lista.tablename || ‘ ADD COLUMN codigo INTEGER';
+RAISE NOTICE ‘Coluna adicionada na tabela %.’,lista.tablename;
+END LOOP;
+IF FOUND THEN
+RETURN TRUE;
+END IF;
+RETURN FALSE;
+END;
+$$ LANGUAGE PLPGSQL;

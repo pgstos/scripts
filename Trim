@@ -1,0 +1,14 @@
+SELECT LTRIM(' Testando '); -- Removendo espaço em branco.
+SELECT TRIM(leading from ' Testando '); -- Removendo espaço em branco.
+SELECT LTRIM('xxTestandox', 'x'); -- Removendo caracter x.
+SELECT TRIM(leading 'x' from 'xxTestandox'); -- Removendo caracter x.
+-- Removendo à direita
+SELECT RTRIM(' Testando '); -- Removendo espaço em branco.
+SELECT TRIM(trailing from ' Testando '); -- Removendo espaço em branco.
+SELECT RTRIM('xxTestandox', 'x'); -- Removendo caracter x.
+SELECT TRIM(trailing 'x' from 'xxTestandox'); -- Removendo caracter x.
+-- Removendo em ambas as extremidades
+SELECT TRIM(' Testando '); -- Removendo espaço em branco.
+SELECT TRIM(both from ' Testando '); -- Removendo espaço em branco.
+SELECT TRIM('xxTestandox', 'x'); -- Removendo caracter x.
+SELECT TRIM(both 'x' from 'xxTestandox'); -- Removendo caracter x.

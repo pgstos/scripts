@@ -1,0 +1,21 @@
+Uso do Like e de Expressões Regulares
+
+Registros:
+Ribamar Ferreira de Sousa
+João Pereira Brito
+
+Usando LIKE e ILIKE
+
+SELECT * FROM clientes WHERE nome LIKE ‘Riba%'; // Retorna Ribamar Ferreira de Sousa
+SELECT * FROM clientes WHERE nome LIKE ‘riba%'; // Nada retorna
+SELECT * FROM clientes WHERE nome ILIKE ‘riba%'; // Retorna Ribamar Ferreira de Sousa
+SELECT * FROM clientes WHERE nome NOT LIKE ‘pedro'; // Retorna ambos os registros
+
+Usando Expressões Regulares
+
+SELECT * FROM clientes WHERE nome ~~ ‘Riba%'; // Retorna Ribamar Ferreira de Sousa
+SELECT * FROM clientes WHERE nome ~~ ‘riba%'; // Nada retorna
+SELECT * FROM clientes WHERE nome ~~* ‘riba%'; // Retorna Ribamar Ferreira de Sousa
+SELECT * FROM clientes WHERE nome !~~ ‘pedro'; // Retorna ambos os registros
+SELECT nome FROM clientes WHERE nome ~ ‘Ribamar Ferreira de Sousa'; // Retorna Ribamar Ferreira de Sousa
+SELECT * FROM clientes WHERE nome !~ ‘jorge'; // Retorna ambos

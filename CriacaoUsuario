@@ -1,0 +1,11 @@
+﻿Alterar a senha do postgres na primeira instalação
+$ sudo passwd postgres 
+
+
+1: Logar em algum banco já criado no postgres através do terminal
+
+2: Criar o usuário com o comando abaixo:
+CREATE USER arenda SUPERUSER INHERIT CREATEDB CREATEROLE;
+
+3: Logo em seguida devemos alterar a senha com o comando abaixo:
+ALTER USER arenda PASSWORD 'Arenda#2014$';

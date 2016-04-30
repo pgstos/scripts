@@ -1,0 +1,46 @@
+http://imasters.com.br/artigo/19578/postgresql/utilizando-cursores-no-postgresql/
+
+
+http://dbapostgresql.blogspot.com.br/
+
+
+CREATE OR REPLACE FUNCTION cursor_update()
+  RETURNS integer AS $$
+DECLARE
+  --parametros
+  V_TOT_UPD   integer := 0;
+  C_NUMERO    integer;
+
+  --cursor
+  cursor_clientes CURSOR FOR SELECT id
+    FROM clientes
+    WHERE ativo='A';
+BEGIN
+      V_TOT_UPD :=0;
+      --
+      OPEN cursor_clientes;
+      --
+      LOOP
+        FETCH cursor_clientes INTO C_NUMERO;
+        EXIT WHEN NOT FOUND;
+        --UPDATE
+      UPDATE clientes
+         SET ativo = 'I'
+       WHERE ativo = 'A'
+         AND id = C_NUMERO;
+      --Contador
+      V_TOT_UPD := V_TOT_UPD + 1;
+
+        IF MOD(V_TOT_UPD,20000) = 0 THEN
+           RAISE NOTICE 'Registros Atualizados.: %', V_TOT_UPD;
+        END IF;
+      END LOOP;
+      --
+      CLOSE cursor_clientes;
+   RETURN V_TOT_UPD;
+END; $$ LANGUAGE 'plpgsql';
+
+
+Após criar a função, execute o comando abaixo para executá-la.
+
+SELECT cursor_update();

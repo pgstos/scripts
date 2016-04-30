@@ -1,0 +1,20 @@
+
+set sql_inheritance to of;
+
+set sql_inheritance to on;
+
+ CREATE TABLE cidade (
+     name text,
+     population float,
+     altitude int 
+ );
+
+ CREATE TABLE capital (
+     state char(2)
+ ) INHERITS (cidade);
+ 
+ 
+ insert into cidade(name,population,altitude)values ('x',100,100)
+ 
+ 
+ insert into capital(name,population,altitude,state)values ('belo',100,100,'bh')
