@@ -1,2 +1,4 @@
-Isso � somente um teste
-Oi Douglas.........
+Isso é somente um teste
+Oi Douglas
+
+Bagaça
